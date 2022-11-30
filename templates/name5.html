@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+
+<!-- navbar -->  
+<body>
+  
+
+<nav class="navbar navbar-expand-lg fixed-top ">  
+    <a class="navbar-brand" href="#top">Home</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">  
+    <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse " id="navbarSupportedContent">     <ul class="navbar-nav mr-4">
+    <!-- <li class="nav-item">
+        <a class="nav-link" data-value="about" href="#about">About</a>        </li>  
+   <li class="nav-item">
+       <a class="nav-link " data-value="portfolio"href="#">Portfolio</a>    
+    </li>
+    <li class="nav-item"> 
+       <a class="nav-link " data-value="blog" href="#">Blog</a>         </li>   
+    <li class="nav-item"> 
+        <a class="nav-link " data-value="contact" href="#contact">Contact</a>       </li> 
+   <li class="nav-item">  
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <button class="dropdown-item" type="button">Action</button>
+        <button class="dropdown-item" type="button">Another action</button>
+        <button class="dropdown-item" type="button">Something else here</button>
+      </div>
+    </div>       </li>  -->
+    <li class="nav-item">
+      <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+    </li>
+   
+   </ul> 
+   </div></nav>
+
+   
+
+<header class="header" id="top">
+    <div class="overlay"></div>
+        <div class="container">
+          {% include 'messages.html' %}
+            <div class="description ">
+                <h1>    Welcome To WW2 Database
+                 <p>    Hello, {{name|safe}}!</p>   
+              <button class="btn btn-outline-secondary btn-lg"><a href="#searchy">See more</a></button></h1>  
+             </div> 
+        </div>
+</header>
+
+<p id="activatetab" style="display:none">{{tab}}</p>
+<div id="searchy">
+  <div class="searchy-container">
+  <ul class="nav nav-pills mb-3 nav-justified" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation" id="pill7">
+        <a        
+          class="nav-link"
+          id="ex1-tab-7"
+          data-mdb-toggle="pill"
+          data-toggle="pill"
+          href="#ex1-pills-7"
+          role="tab"
+          aria-controls="ex1-pills-7"
+          aria-selected="true"
+          >Search</a
+        >
+      </li>
+    <li class="nav-item" role="presentation" id="pill1">
+      <a
+      class="nav-link"
+    
+        id="ex1-tab-1"
+        data-mdb-toggle="pill"
+        data-toggle="pill"
+        href="#ex1-pills-1"
+        role="tab"
+        aria-controls="ex1-pills-1"
+        aria-selected="false"
+        >Advanced Search</a
+      >
+    </li>
+    <li class="nav-item" role="presentation" id="pill2">
+      <a
+      
+      
+      class="nav-link"
+        id="ex1-tab-2"
+        data-mdb-toggle="pill"
+        data-toggle="pill"
+        href="#ex1-pills-2"
+        role="tab"
+        aria-controls="ex1-pills-2"
+        aria-selected="false"
+        >View Table</a
+      >
+    </li>
+    <li class="nav-item" role="presentation" id="pill3">
+      <a
+      
+      class="nav-link"
+        id="ex1-tab-3"
+        data-mdb-toggle="pill"
+        data-toggle="pill"
+        href="#ex1-pills-3"
+        role="tab"
+        aria-controls="ex1-pills-3"
+        aria-selected="false"
+        >Stats</a
+      >
+    </li>
+    <li class="nav-item" role="presentation" id="pill4">
+      <a
+      
+      class="nav-link"
+        id="ex1-tab-4"
+        data-mdb-toggle="pill"
+        data-toggle="pill"
+        href="#ex1-pills-4"
+        role="tab"
+        aria-controls="ex1-pills-4"
+        aria-selected="false"
+        >Compare Countries</a
+      >
+    </li>
+    <li class="nav-item" role="presentation" id="pill5">
+      <a
+      
+      class="nav-link"
+        id="ex1-tab-6"
+        data-mdb-toggle="pill"
+        data-toggle="pill"
+        href="#ex1-pills-6"
+        role="tab"
+        aria-controls="ex1-pills-6"
+        aria-selected="false"
+        >Edit Data</a
+      >
+    </li>
+  </ul>
+  </div>
+  <!-- Pills navs -->
+
+  <!-- Pills content -->
+  <div class="tab-content" id="ex1-content">
+    <div
+      class="tab-pane fade in"
+      id="ex1-pills-1"
+      role="tabpanel"
+      aria-labelledby="ex1-tab-1">
+
+      <div id="searchbar" class="classS" style="padding-bottom:50px 0">
+        <h3>Advanced search &#x1F9E0</h3>
+        <form method=POST>
+        <div class="container h-100">
+          <div class="d-flex justify-content-center h-100">
+            <div class="searchbar">
+              <input id="search" name="search" class="search_input" type="text" name="" placeholder="Search...">
+              <button type="submit" class="search_icon"><i class="fa fa-search"></i></button>
+                <!--<a href="#" class="search_icon"><i class="fas fa-search"></i></a>--><br>
+            </div>
+          </div>
+        </div>
+        <div id="selector">Search in:
+          <select id="cat" name="cat">
+            <option selected="selected">Select category</option>
+            <option value="Battle">Battle</option>
+            <option value="Commander">Commander</option>
+            <option value="Military">Military</option>
+            <option value="Ship">Ship</option>
+
+            <option value="Event">Event</option>
+            <option value="Country">Country</option>
+          </select> by:
+          <select id="by" name="by">
+            <option selected="selected"></option>
+          </select>
+          </div>
+
+        </form>
+      </div>
+      
+    </div>
+    <div class="tab-pane fade in" id="ex1-pills-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+      <div class="container classS" style="padding-bottom:50px 0"> <!--start here-->
+        <h3>Select table to view &#x1F440</h3>
+        <form method=POST>
+          <select id="tables" name="tables">
+            <option selected="selected">Select table</option>
+            <option value="Battle">Battle</option>
+            <option value="Commander">Commander</option>
+            <option value="COMMANDM">Military under Command</option>
+            <option value="Country">Country</option>
+            <option value="Event">Event</option>
+            <option value="has">Battle Info</option>
+            <option value="hass">Ship Info</option>
+            <option value="Military">Military</option>
+            <option value="Place">Place</option>
+            <option value="Ship">Ship</option>
+            <option value="Surrender">Surrender</option>
+            <option value="War">Declaration of War</option>
+          </select>
+          <p>Sort by:</p>
+          <select id="sort" name="sort">
+            <option selected="selected"></option>
+          </select>
+          <p>Order by:</p>
+          <select id="order" name="order">
+            <option selected="selected">Select order</option>
+            <option value="ASC">Ascending</option>
+            <option value="DESC">Descending</option>
+          </select>
+          <p></p><button type="submit" class="view_table">Submit</submit>
+        </form>
+      </div> <!-- end here-->
+    </div>
+    <div class="tab-pane fade in" id="ex1-pills-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+      <div> <!--starts here-->
+        <div class="container">
+          <form method=POST>
+            <h3>Statistics time &#x1F4C8</h3>
+            <button type="submit" class="search_stats">Submit</button>
+          <div class="row">
+              <div class="col-md-6">
+              <div class="card" style="margin:50px 0">
+                        <!-- Default panel contents -->
+                        <div class="card-header">Select Statistics</div>
+                    
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                            Select all
+                            <label class="switch ">
+                              <input id="tab3selectallvar" type="checkbox" name="" value="">
+                              <span class="slider"></span>
+                            </label>
+                          </li>
+                            <li class="list-group-item">
+                                Average
+                                        <label class="switch ">
+                  <input type="checkbox" class="stats" name="stats" value="Average">
+                  <span class="slider"></span>
+                </label>
+                            </li>
+                            <li class="list-group-item">
+                                Max
+                                        <label class="switch ">
+                  <input type="checkbox" class="stats" name="stats" value="Max">
+                  <span class="slider"></span>
+                </label>
+                            </li>
+                            <li class="list-group-item">
+                                Min
+                                        <label class="switch ">
+                  <input type="checkbox" class="stats" name="stats" value="Min">
+                  <span class="slider"></span>
+                </label>
+                            </li>
+                            <li class="list-group-item">
+                                Sum
+                                       <label class="switch ">
+                  <input type="checkbox" class="stats" name="stats" value="Sum">
+                  <span class="slider"></span>
+                </label>
+                            </li>
+                    </div> 
+                    </div>
+                    <div class="col-md-6">
+              <div class="card" style="margin:50px 0">
+                        <!-- Default panel contents -->
+                        <div class="card-header">Select Countries</div>
+                    
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                            Select all
+                            <label class="switch ">
+                              <input id="tab3selectallcountry" type="checkbox" name="" value="">
+                              <span class="slider round"></span>
+                            </label>
+                          </li>
+                          {% for i in range(numCountry) %}
+                            <li class="list-group-item">
+                              {{ countrylist[i]|safe }}
+                              <label class="switch ">
+                                <input class="countries" type="checkbox" name="countries" value="{{ countrylist[i] }}">
+                                <span class="slider round"></span>
+                              </label>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div> 
+                    </div>
+              
+            </div>
+            </form>
+        </div>
+      </div> <!--ends here-->
+    </div>
+    <div class="tab-pane fade in" id="ex1-pills-4" role="tabpanel" aria-labelledby="ex1-tab-4">
+      <div><!--starts here-->
+        <div class="container">
+          <form method=POST>
+            <h3>Draw some nice pie charts! &#x1F967</h3>
+            <button type="submit" class="chart">Submit</button>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card" style="margin:50px 0">
+                          <!-- Default panel contents -->
+                          <div class="card-header">Select Countries in Chart</div>
+                      
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              Select all
+                              <label class="switch ">
+                                <input id="tab4selectallcountry" type="checkbox" name="" value="">
+                                <span class="slider round"></span>
+                              </label>
+                            </li>
+                            {% for i in range(numCountry) %}
+                            <li class="list-group-item">
+                              {{ countrylist[i]|safe }}
+                              <label class="switch ">
+                                <input class="countries2" type="checkbox" name="countries2" value="{{ countrylist[i] }}">
+                                <span class="slider round"></span>
+                              </label>
+                            </li>
+                            {% endfor %}
+                          </ul>
+                      </div> 
+                      </div>
+              <div class="col-md-6">
+                <div class="card" style="margin:50px 0">
+                  <!-- Default panel contents -->
+                  <div class="card-header">Select Variables to Chart</div>
+              
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      Select all
+                      <label class="switch ">
+                        <input id="tab4selectallvar" type="checkbox" name="" value="">
+                        <span class="slider"></span>
+                      </label>
+                    </li>
+                    {% for i in range(numCountryVariable) %}
+                    <li class="list-group-item">
+                      {{ countryvariablenames[i]|safe }}
+                      <label class="switch ">
+                        <input type="checkbox" class="variables" name="variables" value="{{countryvariable[i]}}">
+                        <span class="slider"></span>
+                      </label>
+                    </li>
+                    {% endfor %}
+                      
+                  </ul>
+              </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div><!-- ends here-->
+    </div>
+
+    <div class="tab-pane fade in show active" id="ex1-pills-7" role="tabpanel" aria-labelledby="ex1-tab-7">
+        <div class="container classS" style="padding-bottom:50px 0"> <!--start here-->
+            <h3>Select table to search &#x1F50D</h3>
+            <form method="POST">
+                <div class="container h-100">
+                    <div class="d-flex justify-content-center h-100">
+                      <div class="searchbar7">
+                        <input id="search7" name="search7" class="search_input" type="text" placeholder="Search...">
+                        <button type="submit" class="search_icon"><i class="fa fa-search"></i></button>
+                          <!--<a href="#" class="search_icon"><i class="fas fa-search"></i></a>--><br>
+                          
+                      </div>
+                    </div>
+                  </div>
+            <div id="selector7">
+              <select id="tables7" name="tables7">
+                <option selected="selected">Select table</option>
+                <option value="Battle">Battle</option>
+                <option value="Commander">Commander</option>
+                <option value="COMMANDM">Military under Command</option>
+                <option value="Country">Country</option>
+                <option value="Event">Event</option>
+                <option value="has">Battle Info</option>
+                <option value="hass">Ship Info</option>
+                <option value="Military">Military</option>
+                <option value="Place">Place</option>
+                <option value="Ship">Ship</option>
+                <option value="Surrender">Surrender</option>
+                <option value="War">Declaration of War</option>
+              </select>
+              <p>Search by:</p>
+              <select id="by7" name="by7">
+                <option selected="selected"></option>
+              </select>
+              <p>Sort by:</p>
+              <select id="sort7" name="sort7">
+                <option selected="selected"></option>
+              </select>
+              <p>Order by:</p>
+              <select id="order7" name="order7">
+                <option selected="selected">Select order</option>
+                <option value="ASC">Ascending</option>
+                <option value="DESC">Descending</option>
+              </select>
+              <!--<p></p><button type="submit" class="view_table">Submit</submit>-->
+            </div>
+            </form>
+          </div> <!-- end here-->
+      </div>
+    
+
+    <div class="tab-pane fade in" id="ex1-pills-6" role="tabpanel" aria-labelledby="ex1-tab-6">
+      <div class="container classS">
+        <h3>Select table to edit &#x270F</h3>
+        <form method="POST">
+          <p><select id="tables2" name="tables2">
+            <option selected="selected">Select table</option>
+            <option value="Battle">Battle</option>
+            <option value="Commander">Commander</option>
+            <option value="COMMANDM">Military under Command</option>
+            <option value="Country">Country</option>
+            <option value="Event">Event</option>
+            <option value="has">Battle Info</option>
+            <option value="hass">Ship Info</option>
+            <option value="Military">Military</option>
+            <option value="Place">Place</option>
+            <option value="Ship">Ship</option>
+            <option value="Surrender">Surrender</option>
+            <option value="War">Declaration of War</option>
+
+            <option value="AxisForce">Axis Force</option>
+            <option value="AlliedForce">Allied Force</option>
+            <option value="Axis">Axis</option>
+            <option value="Allies">Allies</option>
+          </select></p>
+          <button type="submit" id="upbt">Load Data</button>
+        </form>
+        
+        <p id="visibilityvar" style="display:none">{{loaddata|safe}}</p>
+        <div id="visibilitydiv" style="display:none">
+        <div class="table-wrapper" >
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-12"><h2 id="Tname">{{tablename|safe}}</h2></div>
+                    
+                </div>
+            </div>
+            <div id="tablediv2" style="width:100%; display:block; overflow-x:auto;">
+            <table class="table table-bordered table-striped" id="datatable" style="width:100%;">
+                <thead style="width:100%;">
+                    <tr >
+                      {% for c in cols %}
+                      <th>{{c|safe}}</th>
+                      {% endfor %}
+                      <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody style="width:100%;">
+                  {% for i in range(numResult) %}
+                      <tr >
+                        {% set rowloop = loop %}
+                          {% for j in range(numCols) %}
+                          {% if var[j] in PK %}
+                            <td class='PK'>{{ result[rowloop.index-1][var[j]]|safe }}</td>
+                          {% else %}
+                            <td >{{ result[rowloop.index-1][var[j]]|safe }}</td>
+                          {% endif %}
+                          {% endfor %}
+                          <td>
+                            <p class='getaction'>0001</p>
+                            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                          </td>
+                      </tr> 
+                  {% endfor %}     
+                </tbody>
+            </table>
+          </div>
+            
+            <div class="table-title">
+              <p></p>
+                <div class="row">
+                    
+                    <div class="col-sm-12">
+                        <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+        </div>
+        <form method="POST" >
+            <input id="alldata" name="alldata"></input>
+            <button type="button" id="cfmbt" onclick="submitPost()">Confirm</button>
+            <button type="submit" id="savebt" disabled>Save Data</button>
+        </form>
+        </div>
+        
+    </div>    
+    </div>
+
+
+  </div>
+</div>
+
+<div id="results" style="padding:10px">
+    {% if tab != 4 and tab!=6 and tab!=0 %} 
+    <h2>Results of search: {{numResults}} results</h2>
+        {%if tab==1%}
+            <div class="form-group has-search">
+                <span class="fa fa-search form-control-feedback"></span>
+                <input type="text" class="form-control" id="searchInput" onkeyup="searchtab1()" placeholder="Search for anything...">
+            </div>
+            
+        {%endif%}
+        {%if tab==2%}
+            <div class="form-group has-search">
+                <span class="fa fa-search form-control-feedback"></span>
+                <input type="text" class="form-control" id="searchInput" onkeyup="searchtab2()" placeholder="Search for anything...">
+            </div>
+            
+        {%endif%}
+        {%if tab==7%}
+            <div class="form-group has-search">
+                <span class="fa fa-search form-control-feedback"></span>
+                <input type="text" class="form-control" id="searchInput" onkeyup="searchtab7()" placeholder="Search for anything...">
+            </div>
+            
+        {%endif%}
+
+    <div id='outsideoutsidediv' style="height:300px;">
+    <div id='outsidetablediv' style="overflow-x: scroll; min-height:100px">
+        <div id='tablediv'>
+    <table id="resultstable" class="table table-bordered table-striped" >
+        <thead id='tableheader'>
+        <tr>
+          {% for c in columnName %}
+          <th>{{c|safe}}</th>
+          {% endfor %}
+          </tr>
+        </thead>
+        <tbody id='tablebody'>
+        {% for i in range(numResults) %}
+            <tr>
+              {% set rowloop = loop %}
+              {% for j in range(numCols) %}
+                <td>{{ results[rowloop.index-1][varName[j]]|safe }}</td>
+                {% endfor %}
+            </tr> 
+        {% endfor %}
+  
+        {% if tab==3 %}
+          <tr>
+            {% if result1!=[] %}
+              {% for j in range(numCols) %}
+                <td>{{ result1[0][varName[j]] |safe }}</td>
+              {% endfor %}
+              {% endif %}
+          </tr>
+          <tr>
+              {% if result2!=[] %}
+              {% for j in range(numCols) %}
+                <td>{{ result2[0][varName[j]]|safe }}</td>
+              {% endfor %}
+              {% endif %}
+          </tr>
+          <tr>
+              {% if result3!=[] %}
+              {% for j in range(numCols) %}
+                <td>{{ result3[0][varName[j]] |safe }}</td>
+              {% endfor %}
+              {% endif %}
+          </tr>
+          <tr>
+              {% if result4!=[] %}
+              {% for j in range(numCols) %}
+                <td>{{ result4[0][varName[j]]|safe }}</td>
+              {% endfor %}
+              {% endif %}
+            {% endif %}
+          </tr>
+        </tbody>
+    </table>
+        </div>
+    </div>
+    </div>  
+    {% endif %}
+    {% if tab==4 %}
+      <div class="container">
+        <div class="row img-grid">
+          {% for i in range(numimgs) %}
+            <div class="col-12 col-md-4 img-grid-item thumb">
+              <a href="{{imgs[i]}}"  class="fancybox" rel="ligthbox"></a>
+              <img src="{{ imgs[i]}}" class="img-item zoom img-fluid">
+              <div class="img-txt">{{colsplotted[i]|safe}}</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+    
+    {% if tab==6 %}
+    <h2>Successfully Edited Tables</h2>
+      <table id="overallstats" class="table table-bordered table-striped">
+        <tr>
+          {% for c in tablestatscols %}
+          <th>{{c|safe}}</th>
+          {% endfor %}
+        </tr>
+        <tr>
+          {% for i in tablestats %}
+            <td>{{i|safe}}</td>
+          {% endfor %}
+        </tr>
+      </table>
+    {% endif %}
+  </div>
+
+<script>
+  
+
+    $(function() {
+  var $window = $('outsideoutsidediv');
+  var $table = $('table');
+  var header = $("thead");
+
+   $window.scroll(toFixTableHeader);
+
+
+  function toFixTableHeader() {
+    var scroll = $window.scrollTop();
+    $('#tablebody').css("visibility", "hidden");
+
+    if (scroll >= $('#tablediv').offset().top) {
+      $("#tableheader tr th").css({
+        top: scroll - $('#tablediv').offset().top,
+      });
+    } else {
+      $("#tableheader tr th").css({
+        top: 0
+      });
+    }
+
+    $('#tablebody').css("visibility", "visible");
+  }
+});
+
+
+
+
+  function submitPost(){
+    var myTab = document.getElementById('datatable');
+        var arrValues = new Array();
+        arrValues.push(document.getElementById('Tname').innerHTML);
+        // loop through each row of the table.
+        //window.alert(myTab.rows.length)
+        for (row = 1; row < myTab.rows.length; row++) {
+        	// loop through each cell in a row.
+          //window.alert(myTab.rows[row].cells.length);
+            for (c = 0; c < myTab.rows[row].cells.length-1; c++) {  
+                var element = myTab.rows.item(row).cells[c];
+                var txt=element.innerText;
+                var regex=new RegExp(',','g');
+                var regex2=new RegExp('\'','g');
+                arrValues.push((txt.replace(regex, '_')).replace(regex, '`'));
+                //if (element.childNodes[0].getAttribute('type') == 'text') {
+                    //arrValues.push("'" + element.childNodes[0].value + "'");
+                //}
+            }
+            var lastelement = myTab.rows.item(row).cells[myTab.rows[row].cells.length-1].getElementsByTagName("p")[0];
+            var regex=new RegExp(',','g');
+            var regex2=new RegExp('\'','g');
+            arrValues.push((lastelement.innerText.replace(regex, '_')).replace(regex2,'`'));
+        }
+        
+        // The final output.
+        // document.getElementById('edits').innerHTML = arrValues;
+        //window.alert(arrValues);
+        document.getElementById('alldata').value = arrValues;
+        document.getElementById("savebt").disabled = false;
+  }
+
+  function searchtab2() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("resultstable");
+        tr = table.getElementsByTagName("tr");
+      
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 1; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td");
+          tr[i].style.display = "none";
+          for(j=0;j<td.length;j++){
+            if (td[j]) {
+                txtValue = td[j].textContent || td[j].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } 
+            }
+          }
+        }
+      }
+      function searchtab1() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("resultstable");
+        tr = table.getElementsByTagName("tr");
+      
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 1; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td");
+          tr[i].style.display = "none";
+          for(j=0;j<td.length;j++){
+            if (td[j]) {
+                txtValue = td[j].textContent || td[j].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } 
+            }
+          }
+        }
+      }
+      function searchtab7() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("resultstable");
+        tr = table.getElementsByTagName("tr");
+      
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 1; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td");
+          tr[i].style.display = "none";
+          for(j=0;j<td.length;j++){
+            if (td[j]) {
+                txtValue = td[j].textContent || td[j].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } 
+            }
+          }
+        }
+      }
+  
+</script>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/datepick/5.1.1/js/jquery.plugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+<script type="text/javascript" src='../../static/js/name5.js'></script>   
+
+</body>
+
+
+

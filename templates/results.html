@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+  </head>
+<!-- navbar -->  
+<body>
+<nav class="navbar navbar-expand-lg fixed-top ">  
+    <a class="navbar-brand" href="#top">Home</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">  
+    <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse " id="navbarSupportedContent">     <ul class="navbar-nav mr-4">
+    <!-- <li class="nav-item">
+        <a class="nav-link" data-value="about" href="#about">About</a>        </li>  
+   <li class="nav-item">
+       <a class="nav-link " data-value="portfolio"href="#">Portfolio</a>    
+    </li>
+    <li class="nav-item"> 
+       <a class="nav-link " data-value="blog" href="#">Blog</a>         </li>   
+    <li class="nav-item"> 
+        <a class="nav-link " data-value="contact" href="#contact">Contact</a>       </li> 
+   <li class="nav-item">  
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <button class="dropdown-item" type="button">Action</button>
+        <button class="dropdown-item" type="button">Another action</button>
+        <button class="dropdown-item" type="button">Something else here</button>
+      </div>
+    </div>       </li>  -->
+    <li class="nav-item">
+        <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+      </li>
+   </ul> 
+   </div></nav>
+
+<header class="header" id="top">
+    <div class="overlay"></div>
+        <div class="container">
+            <div class="description ">
+                <h1>    Welcome To Company C Website
+                 <p>    Hello, {{name}}!</p>   
+              <button class="btn btn-outline-secondary btn-lg">See more</button>   </h1>  
+             </div> 
+        </div>
+</header>
+
+<div id="searchy" class="searchy-container">
+  <ul class="nav nav-pills mb-3 nav-justified" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation" id="pill1">
+      <a
+        class="nav-link active"
+        id="ex1-tab-1"
+        data-mdb-toggle="pill"
+        data-toggle="pill"
+        href="#ex1-pills-1"
+        role="tab"
+        aria-controls="ex1-pills-1"
+        aria-selected="true"
+        >Search</a
+      >
+    </li>
+    <li class="nav-item" role="presentation" id="pill2">
+      <a
+        class="nav-link"
+        id="ex1-tab-2"
+        data-mdb-toggle="pill"
+        data-toggle="pill"
+        href="#ex1-pills-2"
+        role="tab"
+        aria-controls="ex1-pills-2"
+        aria-selected="false"
+        >View Table</a
+      >
+    </li>
+    <li class="nav-item" role="presentation" id="pill3">
+      <a
+        class="nav-link"
+        id="ex1-tab-3"
+        data-mdb-toggle="pill"
+        data-toggle="pill"
+        href="#ex1-pills-3"
+        role="tab"
+        aria-controls="ex1-pills-3"
+        aria-selected="false"
+        >Stats</a
+      >
+    </li>
+    <li class="nav-item" role="presentation" id="pill4">
+      <a
+        class="nav-link"
+        id="ex1-tab-4"
+        data-mdb-toggle="pill"
+        data-toggle="pill"
+        href="#ex1-pills-4"
+        role="tab"
+        aria-controls="ex1-pills-4"
+        aria-selected="false"
+        >Compare Countries</a
+      >
+    </li>
+    <li class="nav-item" role="presentation" id="pill5">
+      <a
+        class="nav-link"
+        id="ex1-tab-6"
+        data-mdb-toggle="pill"
+        data-toggle="pill"
+        href="#ex1-pills-6"
+        role="tab"
+        aria-controls="ex1-pills-6"
+        aria-selected="false"
+        >Edit Data</a
+      >
+    </li>
+  </ul>
+  <!-- Pills navs -->
+
+  <!-- Pills content -->
+  <div class="tab-content" id="ex1-content">
+    <div
+      class="tab-pane fade in show active"
+      id="ex1-pills-1"
+      role="tabpanel"
+      aria-labelledby="ex1-tab-1"
+    >
+      Tab 1 content
+
+      <div id="searchbar" class="classS" style="padding-bottom:50px 0">
+        <form method=POST>
+        <div class="container h-100">
+          <div class="d-flex justify-content-center h-100">
+            <div class="searchbar">
+              <input id="search" name="search" class="search_input" type="text" name="" placeholder="Search...">
+              <button type="submit" class="search_icon"><i class="fa fa-search"></i></button>
+                <!--<a href="#" class="search_icon"><i class="fas fa-search"></i></a>--><br>
+                
+            </div>
+          </div>
+        </div>
+        <div id="selector">Search in:
+          <select id="cat" name="cat">
+            <option selected="selected">Select category</option>
+            <option value="Battle">Battle</option>
+            <option value="Commander">Commander</option>
+            <option value="Military">Military</option>
+            <option value="Ship">Ship</option>
+          </select> by:
+          <select id="by" name="by">
+            <option selected="selected"></option>
+          </select>
+          </div>
+      </form>
+      </div>
+      
+    </div>
+
+    <div class="tab-pane fade in" id="ex1-pills-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+      Tab 2 content
+      <div class="container classS" style="padding-bottom:50px 0"> <!--start here-->
+        <h3>Select table to view &#x1F440</h3>
+        <form method=POST>
+          <select id="tables" name="tables">
+            <option selected="selected">Select table</option>
+            <option value="Battle">Battle</option>
+            <option value="Commander">Commander</option>
+            <option value="COMMANDM">Military under Command</option>
+            <option value="Country">Country</option>
+            <option value="Event">Event</option>
+            <option value="has">Battle Info</option>
+            <option value="hass">Ship Info</option>
+            <option value="Military">Military</option>
+            <option value="Place">Place</option>
+            <option value="Ship">Ship</option>
+            <option value="Surrender">Surrender</option>
+            <option value="War">Declaration of War</option>
+          </select>
+          <p>Sort by:</p>
+          <select id="sort" name="sort">
+            <option selected="selected"></option>
+          </select>
+          <p>Order by:</p>
+          <select id="order" name="order">
+            <option selected="selected">Select order</option>
+            <option value="ASC">Ascending</option>
+            <option value="DESC">Descending</option>
+          </select>
+          <p></p><button type="submit" class="view_table">Submit</submit>
+        </form>
+      </div>
+    </div>
+    <div class="tab-pane fade in" id="ex1-pills-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+      Tab 3 content
+      <div> <!--starts here-->
+        <div class="container">
+          <form method=POST>
+            <h3>Select the statistics and countries and press Submit -> :)</h3>
+            <button type="submit" class="search_stats">Submit</button>
+          <div class="row">
+              <div class="col-md-6">
+              <div class="card" style="margin:50px 0">
+                        <!-- Default panel contents -->
+                        <div class="card-header">Select Statistics</div>
+                    
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                Average
+                                        <label class="switch ">
+                  <input type="checkbox" class="average" name="stats" value="Average">
+                  <span class="slider"></span>
+                </label>
+                            </li>
+                            <li class="list-group-item">
+                                Max
+                                        <label class="switch ">
+                  <input type="checkbox" class="max" name="stats" value="Max">
+                  <span class="slider"></span>
+                </label>
+                            </li>
+                            <li class="list-group-item">
+                                Min
+                                        <label class="switch ">
+                  <input type="checkbox" class="min" name="stats" value="Min">
+                  <span class="slider"></span>
+                </label>
+                            </li>
+                            <li class="list-group-item">
+                                Sum
+                                       <label class="switch ">
+                  <input type="checkbox" class="sum" name="stats" value="Sum">
+                  <span class="slider"></span>
+                </label>
+                            </li>
+                            <!--<li class="list-group-item">
+                                Bootstrap Switch Warning
+                                       <label class="switch ">
+                  <input type="checkbox" class="warning">
+                  <span class="slider"></span>
+                </label>
+                            </li>
+                            <li class="list-group-item">
+                                Bootstrap Switch Danger
+                                      <label class="switch ">
+                  <input type="checkbox" class="danger">
+                  <span class="slider"></span>
+                </label>
+                            </li>
+                        </ul>-->
+                    </div> 
+                    </div>
+                    <div class="col-md-6">
+              <div class="card" style="margin:50px 0">
+                        <!-- Default panel contents -->
+                        <div class="card-header">Select Countries</div>
+                    
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                Australia
+                                        <label class="switch ">
+                  <input type="checkbox" class="AUS" name="countries" value="Australia">
+                  <span class="slider round"></span>
+                </label>
+                            </li>
+                            <li class="list-group-item">
+                                Belgium
+                                        <label class="switch ">
+                  <input type="checkbox" class="BEL" name="countries" value="Belgium">
+                  <span class="slider round"></span>
+                </label>
+                            </li>
+                            <li class="list-group-item">
+                                China
+                                        <label class="switch ">
+                  <input type="checkbox" class="CHN" name="countries" value="China">
+                  <span class="slider round"></span>
+                </label>
+                            </li>
+                            <li class="list-group-item">
+                                Denmark
+                                       <label class="switch ">
+                  <input type="checkbox" class="DNK" name="countries" value="Denmark">
+                  <span class="slider round"></span>
+                </label>
+                            </li>
+                            <li class="list-group-item">
+                                Egypt
+                                       <label class="switch ">
+                  <input type="checkbox" class="EGY" name="countries" value="Egypt">
+                  <span class="slider round"></span>
+                </label>
+                            </li>
+                            <li class="list-group-item">
+                                France
+                                      <label class="switch ">
+                  <input type="checkbox" class="FRA" name="countries" value="France">
+                  <span class="slider round"></span>
+                </label>
+                            </li>
+                            <li class="list-group-item">
+                              Germany
+                                    <label class="switch ">
+                <input type="checkbox" class="DEU" name="countries" value="Germany">
+                <span class="slider round"></span>
+              </label>
+                          </li>
+                          <li class="list-group-item">
+                            Greece
+                                  <label class="switch ">
+              <input type="checkbox" class="GRC" name="countries" value="Greece">
+              <span class="slider round"></span>
+            </label>
+                        </li>
+                        <li class="list-group-item">
+                          Italy
+                                <label class="switch ">
+            <input type="checkbox" class="ITA" name="countries" value="Italy">
+            <span class="slider round"></span>
+          </label>
+                      </li>
+                      <li class="list-group-item">
+                        Japan
+                              <label class="switch ">
+          <input type="checkbox" class="JPN" name="countries" value="Japan">
+          <span class="slider round"></span>
+        </label>
+                    </li>
+                    <li class="list-group-item">
+                      Libya
+                            <label class="switch ">
+        <input type="checkbox" class="LBY" name="countries" value="Libya">
+        <span class="slider round"></span>
+      </label>
+                  </li>
+                  <li class="list-group-item">
+                    Luxembourg
+                          <label class="switch ">
+      <input type="checkbox" class="LUX" name="countries" value="Luxembourg">
+      <span class="slider round"></span>
+    </label>
+                </li>
+                <li class="list-group-item">
+                  Netherlands
+                        <label class="switch ">
+    <input type="checkbox" class="NLD" name="countries" value="Netherlands">
+    <span class="slider round"></span>
+  </label>
+              </li>
+              <li class="list-group-item">
+                Norway
+                      <label class="switch ">
+  <input type="checkbox" class="NOR" name="countries" value="Norway">
+  <span class="slider round"></span>
+</label>
+            </li>
+            <li class="list-group-item">
+              Philippines
+                    <label class="switch ">
+<input type="checkbox" class="PHL" name="countries" value="Philippines">
+<span class="slider round"></span>
+</label>
+          </li>
+          <li class="list-group-item">
+            Poland
+                  <label class="switch ">
+<input type="checkbox" class="POL" name="countries" value="Poland">
+<span class="slider round"></span>
+</label>
+        </li>
+        <li class="list-group-item">
+          Singapore
+                <label class="switch ">
+<input type="checkbox" class="SGP" name="countries" value="Singapore">
+<span class="slider round"></span>
+</label>
+      </li>
+      <li class="list-group-item">
+        United Kingdom
+              <label class="switch ">
+<input type="checkbox" class="GBR" name="countries" value="United Kingdom">
+<span class="slider round"></span>
+</label>
+    </li>
+    <li class="list-group-item">
+      USA
+            <label class="switch ">
+<input type="checkbox" class="USA" name="countries" value="USA">
+<span class="slider round"></span>
+</label>
+  </li>
+  <li class="list-group-item">
+    USSR
+          <label class="switch ">
+<input type="checkbox" class="USSR" name="countries" value="USSR">
+<span class="slider round"></span>
+</label>
+</li>
+                        </ul>
+                    </div> 
+                    </div>
+            </div>
+            </form>
+        </div>
+      </div> <!--ends here-->
+    </div>
+    <div class="tab-pane fade in" id="ex1-pills-4" role="tabpanel" aria-labelledby="ex1-tab-4">
+      Tab 4 content
+      <div><!--starts here-->
+        <div class="container">
+          <form method=POST>
+            <h3>Draw some nice pie charts!</h3>
+            <button type="submit" class="chart">Submit</button>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card" style="margin:50px 0">
+                          <!-- Default panel contents -->
+                          <div class="card-header">Select Countries in Chart</div>
+                      
+                          <ul class="list-group list-group-flush">
+                              <li class="list-group-item">
+                                  Australia
+                                          <label class="switch ">
+                    <input type="checkbox" class="AUS" name="countries2" value="Australia">
+                    <span class="slider round"></span>
+                  </label>
+                              </li>
+                              <li class="list-group-item">
+                                  Belgium
+                                          <label class="switch ">
+                    <input type="checkbox" class="BEL" name="countries2" value="Belgium">
+                    <span class="slider round"></span>
+                  </label>
+                              </li>
+                              <li class="list-group-item">
+                                  China
+                                          <label class="switch ">
+                    <input type="checkbox" class="CHN" name="countries2" value="China">
+                    <span class="slider round"></span>
+                  </label>
+                              </li>
+                              <li class="list-group-item">
+                                  Denmark
+                                         <label class="switch ">
+                    <input type="checkbox" class="DNK" name="countries2" value="Denmark">
+                    <span class="slider round"></span>
+                  </label>
+                              </li>
+                              <li class="list-group-item">
+                                  Egypt
+                                         <label class="switch ">
+                    <input type="checkbox" class="EGY" name="countries2" value="Egypt">
+                    <span class="slider round"></span>
+                  </label>
+                              </li>
+                              <li class="list-group-item">
+                                  France
+                                        <label class="switch ">
+                    <input type="checkbox" class="FRA" name="countries2" value="France">
+                    <span class="slider round"></span>
+                  </label>
+                              </li>
+                              <li class="list-group-item">
+                                Germany
+                                      <label class="switch ">
+                  <input type="checkbox" class="DEU" name="countries2" value="Germany">
+                  <span class="slider round"></span>
+                </label>
+                            </li>
+                            <li class="list-group-item">
+                              Greece
+                                    <label class="switch ">
+                <input type="checkbox" class="GRC" name="countries2" value="Greece">
+                <span class="slider round"></span>
+              </label>
+                          </li>
+                          <li class="list-group-item">
+                            Italy
+                                  <label class="switch ">
+              <input type="checkbox" class="ITA" name="countries2" value="Italy">
+              <span class="slider round"></span>
+            </label>
+                        </li>
+                        <li class="list-group-item">
+                          Japan
+                                <label class="switch ">
+            <input type="checkbox" class="JPN" name="countries2" value="Japan">
+            <span class="slider round"></span>
+          </label>
+                      </li>
+                      <li class="list-group-item">
+                        Libya
+                              <label class="switch ">
+          <input type="checkbox" class="LBY" name="countries2" value="Libya">
+          <span class="slider round"></span>
+        </label>
+                    </li>
+                    <li class="list-group-item">
+                      Luxembourg
+                            <label class="switch ">
+        <input type="checkbox" class="LUX" name="countries2" value="Luxembourg">
+        <span class="slider round"></span>
+      </label>
+                  </li>
+                  <li class="list-group-item">
+                    Netherlands
+                          <label class="switch ">
+      <input type="checkbox" class="NLD" name="countries2" value="Netherlands">
+      <span class="slider round"></span>
+    </label>
+                </li>
+                <li class="list-group-item">
+                  Norway
+                        <label class="switch ">
+    <input type="checkbox" class="NOR" name="countries2" value="Norway">
+    <span class="slider round"></span>
+  </label>
+              </li>
+              <li class="list-group-item">
+                Philippines
+                      <label class="switch ">
+  <input type="checkbox" class="PHL" name="countries2" value="Philippines">
+  <span class="slider round"></span>
+  </label>
+            </li>
+            <li class="list-group-item">
+              Poland
+                    <label class="switch ">
+  <input type="checkbox" class="POL" name="countries2" value="Poland">
+  <span class="slider round"></span>
+  </label>
+          </li>
+          <li class="list-group-item">
+            Singapore
+                  <label class="switch ">
+  <input type="checkbox" class="SGP" name="countries2" value="Singapore">
+  <span class="slider round"></span>
+  </label>
+        </li>
+        <li class="list-group-item">
+          United Kingdom
+                <label class="switch ">
+  <input type="checkbox" class="GBR" name="countries2" value="United Kingdom">
+  <span class="slider round"></span>
+  </label>
+      </li>
+      <li class="list-group-item">
+        USA
+              <label class="switch ">
+  <input type="checkbox" class="USA" name="countries2" value="USA">
+  <span class="slider round"></span>
+  </label>
+    </li>
+    <li class="list-group-item">
+      USSR
+            <label class="switch ">
+  <input type="checkbox" class="USSR" name="countries2" value="USSR">
+  <span class="slider round"></span>
+  </label>
+  </li>
+                          </ul>
+                      </div> 
+                      </div>
+              <div class="col-md-6">
+                <div class="card" style="margin:50px 0">
+                  <!-- Default panel contents -->
+                  <div class="card-header">Select Variables to Chart</div>
+              
+                  <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                          Max Ground Strength
+                                  <label class="switch ">
+            <input type="checkbox" class="variables" name="variables" value="MAXGSTR">
+            <span class="slider round"></span>
+          </label>
+                      </li>
+                      <li class="list-group-item">
+                          No. of Carriers
+                                  <label class="switch ">
+            <input type="checkbox" class="variables" name="variables" value="NUMCV">
+            <span class="slider round"></span>
+          </label>
+                      </li>
+                      <li class="list-group-item">
+                          No. of Battleships
+                                  <label class="switch ">
+            <input type="checkbox" class="variables" name="variables" value="NUMBB">
+            <span class="slider round"></span>
+          </label>
+                      </li>
+                      <li class="list-group-item">
+                          No. of Cruisers
+                                 <label class="switch ">
+            <input type="checkbox" class="variables" name="variables" value="NUMC">
+            <span class="slider round"></span>
+          </label>
+                      </li>
+                      <li class="list-group-item">
+                          No. of Destroyers
+                                 <label class="switch ">
+            <input type="checkbox" class="variables" name="variables" value="NUMDD">
+            <span class="slider round"></span>
+          </label>
+                      </li>
+                      <li class="list-group-item">
+                          No. of Submarines
+                                <label class="switch ">
+            <input type="checkbox" class="variables" name="variables" value="NUMSS">
+            <span class="slider round"></span>
+          </label>
+                      </li>
+                      <li class="list-group-item">
+                        No. of Fighters
+                              <label class="switch ">
+          <input type="checkbox" class="variables" name="variables" value="NUMFIGHT">
+          <span class="slider round"></span>
+        </label>
+                    </li>
+                    <li class="list-group-item">
+                      No. of Bombers
+                            <label class="switch ">
+        <input type="checkbox" class="variables" name="variables" value="NUMBOMB">
+        <span class="slider round"></span>
+      </label>
+                  </li>
+                  <li class="list-group-item">
+                    Armor Lost 
+                          <label class="switch ">
+      <input type="checkbox" class="variables" name="variables" value="NUMARMORL">
+      <span class="slider round"></span>
+    </label>
+                </li>
+                <li class="list-group-item">
+                  Aircraft Lost
+                        <label class="switch ">
+    <input type="checkbox" class="variables" name="variables" value="NUMAIRCRAFTL">
+    <span class="slider round"></span>
+  </label>
+              </li>
+              <li class="list-group-item">
+                Carriers Lost
+                      <label class="switch ">
+  <input type="checkbox" class="variables" name="variables" value="NUMCVL">
+  <span class="slider round"></span>
+</label>
+            </li>
+            <li class="list-group-item">
+              Battleships Lost
+                    <label class="switch ">
+<input type="checkbox" class="variables" name="variables" value="NUMBBL">
+<span class="slider round"></span>
+</label>
+          </li>
+          <li class="list-group-item">
+            Cruisers Lost
+                  <label class="switch ">
+<input type="checkbox" class="variables" name="variables" value="NUMCL">
+<span class="slider round"></span>
+</label>
+        </li>
+        <li class="list-group-item">
+          Destroyers Lost
+                <label class="switch ">
+<input type="checkbox" class="variables" name="variables" value="NUMDDL">
+<span class="slider round"></span>
+</label>
+      </li>
+      <li class="list-group-item">
+        Submarines Lost
+              <label class="switch ">
+<input type="checkbox" class="variables" name="variables" value="NUMSSL">
+<span class="slider round"></span>
+</label>
+    </li>
+    <li class="list-group-item">
+      Military Casualties
+            <label class="switch ">
+<input type="checkbox" class="variables" name="variables" value="MCASUALTY">
+<span class="slider round"></span>
+</label>
+  </li>
+  <li class="list-group-item">
+    Civilian Casualties
+          <label class="switch ">
+<input type="checkbox" class="variables" name="variables" value="CCASUALTY">
+<span class="slider round"></span>
+</label>
+</li>
+                  </ul>
+              </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div><!-- ends here-->
+    </div>
+  </div>
+</div>
+
+<div id="results">
+  {% if tab != 4  and tab!=5 and tab!=6 %} 
+  <h2>Results of search: {{numResults}} results</h2>
+  <table id="resultstable">
+      <tr>
+        {% for c in columnName %}
+        <th>{{c}}</th>
+        {% endfor %}
+        </tr>
+      
+      {% for i in range(numResults) %}
+          <tr>
+            {% set rowloop = loop %}
+            {% for j in range(numCols) %}
+              <td>{{ results[rowloop.index-1][varName[j]] }}</td>
+              {% endfor %}
+          </tr> 
+      {% endfor %}
+
+      {% if tab==3 %}
+        <tr>
+          {% if result1!=[] %}
+            {% for j in range(numCols) %}
+              <td>{{ result1[0][varName[j]] }}</td>
+            {% endfor %}
+            {% endif %}
+        </tr>
+        <tr>
+            {% if result2!=[] %}
+            {% for j in range(numCols) %}
+              <td>{{ result2[0][varName[j]] }}</td>
+            {% endfor %}
+            {% endif %}
+        </tr>
+        <tr>
+            {% if result3!=[] %}
+            {% for j in range(numCols) %}
+              <td>{{ result3[0][varName[j]] }}</td>
+            {% endfor %}
+            {% endif %}
+        </tr>
+        <tr>
+            {% if result4!=[] %}
+            {% for j in range(numCols) %}
+              <td>{{ result4[0][varName[j]] }}</td>
+            {% endfor %}
+            {% endif %}
+          {% endif %}
+        </tr>
+  </table>
+  {% endif %}
+  {% if tab==4 %}
+    <div class="container">
+      <div class="row img-grid">
+        {% for i in range(numimgs) %}
+          <div class="col-12 col-md-4 img-grid-item thumb">
+            <a href="{{imgs[i]}}"  class="fancybox" rel="ligthbox"></a>
+            <img src="{{ imgs[i]}}" class="img-item zoom img-fluid">
+            <div class="img-txt">{{colsplotted[i]}}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+  {% if tab==5 %}
+    <table id="comparetable">
+      
+    </table>
+  {% endif %}
+  {% if tab==6 %}
+  <h2>Successfully Edited Tables</h2>
+    <table id="overallstats">
+      <tr>
+        {% for c in tablestatscols %}
+        <th>{{c}}</th>
+        {% endfor %}
+      </tr>
+      <tr>
+        {% for i in tablestats %}
+          <td>{{i}}</td>
+        {% endfor %}
+      </tr>
+    </table>
+  {% endif %}
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/datepick/5.1.1/js/jquery.plugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+<script type="text/javascript" src='../../static/js/results.js'></script>   
+<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
+
+
+
