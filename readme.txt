@@ -1,1 +1,1 @@
-Hi Mrs. Lee, please run from proj5.py. Thank you!
+Run from proj5.py
